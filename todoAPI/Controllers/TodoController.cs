@@ -47,11 +47,6 @@ namespace todoAPI.Controllers
         {
             using IDbConnection con = new SqlConnection(Program.ConnectionString);
             return Ok(con.Delete(new Todo { ID = id }));
-        }
-        public static Todo GetTodo(this object o)
-        {
-
-            return new Todo();
-        }
+        } 
     }
 }
