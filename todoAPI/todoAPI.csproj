@@ -5,6 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="TodoSample.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="TodoSample.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.78" />
     <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />

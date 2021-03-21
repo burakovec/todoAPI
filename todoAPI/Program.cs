@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 namespace todoAPI
 {
     public class Program
-    {
-        public static string ConnectionString = "data source=10.10.4.11;initial catalog=TodoSample;user id=nilvera;password=1234;MultipleActiveResultSets=True";
+    { 
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
