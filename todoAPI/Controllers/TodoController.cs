@@ -1,4 +1,5 @@
-﻿using Dapper.Contrib.Extensions;
+﻿using Dapper;
+using Dapper.Contrib.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace todoAPI.Controllers
         public IActionResult Get()
         {
             using IDbConnection con = TodoDbFactory.Singleton.OpenConnection();
+            DynamicParameters dynamicParameters = new DynamicParameters();
             return Ok(con.GetAll<Todo>());
         }
 
@@ -33,7 +35,9 @@ namespace todoAPI.Controllers
         public IActionResult Post([FromBody] Todo value)
         {
             using IDbConnection con = TodoDbFactory.Singleton.OpenConnection();
-            return Ok(con.Insert(value));
+            var TodoID = con.Insert(value);
+            value.ID = (int)TodoID;
+            return Ok(value);
         }
 
         [HttpPut]
@@ -48,6 +52,6 @@ namespace todoAPI.Controllers
         {
             using IDbConnection con = TodoDbFactory.Singleton.OpenConnection();
             return Ok(con.Delete(new Todo { ID = id }));
-        } 
+        }
     }
 }
