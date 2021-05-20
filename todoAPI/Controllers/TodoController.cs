@@ -35,8 +35,7 @@ namespace todoAPI.Controllers
         public IActionResult Post([FromBody] Todo value)
         {
             using IDbConnection con = TodoDbFactory.Singleton.OpenConnection();
-            var TodoID = con.Insert(value);
-            value.ID = (int)TodoID;
+            var TodoID = con.Insert(value); 
             return Ok(value);
         }
 
